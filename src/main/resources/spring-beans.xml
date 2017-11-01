@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="studentInfoOp" class="com.hao.storage.StudentInfoOpImpl"></bean>
+	<bean id="teacherInfoOp" class="com.hao.storage.TeacherInfoOpImpl"></bean>
+
+
+	<bean id="FrontDesk" class="com.hao.manager.FrontDesk" init-method="init">
+		<property name="studentInfoOp" ref="studentInfoOp"></property>
+		<property name="teacherInfoOp" ref="teacherInfoOp"></property>
+	</bean>
+</beans>
