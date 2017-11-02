@@ -3,6 +3,25 @@
 <configuration>
 
 	<properties resource="myBatis-config.properties"></properties>
+	<settings>
+	<setting name="mapUnderscoreToCamelCase" value="true"></setting>
+	</settings>
+	
+	<!-- 别名不区分大小写 -->
+	<typeAliases>
+	
+	<!-- 1.为java类型取别名
+		type:指定要取别名的类型全类名，默认别名为类名小写
+		alias:指定别名 -->
+	 <typeAlias type="com.hao.personnel.information.Student" alias="student"></typeAlias>
+	 <typeAlias type="com.hao.personnel.information.Teacher" alias="teacher"></typeAlias>
+	 
+	<!-- 2.批量为某包下所有的类取别名 -->
+	<package name="com.hao.personnel.information"></package>
+	
+	<!-- 3.在类前使用注解@Alias("xxx") -->
+	</typeAliases>
+	
 	
 	<environments default="development">
 		<environment id="development">

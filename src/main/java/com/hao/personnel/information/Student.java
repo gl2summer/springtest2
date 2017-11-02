@@ -2,6 +2,9 @@ package com.hao.personnel.information;
 
 import java.util.Date;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias(value="student")
 public class Student {
 	private Integer id;
 	private String name;

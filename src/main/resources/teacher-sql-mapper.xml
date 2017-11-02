@@ -9,7 +9,7 @@
     </update>
     
     <!-- 添加数据 -->
-    <insert id="add" parameterType="com.hao.personnel.information.Teacher">
+    <insert id="add" parameterType="teacher">
         insert into teacher(name,birth,gender) value(#{name},#{birth},#{gender});
     </insert>
     
