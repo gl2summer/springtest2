@@ -4,9 +4,10 @@ import java.io.IOException;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
-import com.hao.myBatis.MapperFactory;
+
 import com.hao.myBatis.TeacherMapper;
 import com.hao.personnel.information.Teacher;
+import com.hao.test.MapperFactory;
 
 public class TeacherInfoOpImpl implements TeacherInfoOp {
 

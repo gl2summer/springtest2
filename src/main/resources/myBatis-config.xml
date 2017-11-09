@@ -4,27 +4,28 @@
 
 	<properties resource="myBatis-config.properties"></properties>
 	<settings>
-	<setting name="mapUnderscoreToCamelCase" value="true"></setting>
+		<setting name="mapUnderscoreToCamelCase" value="true"></setting>
 	</settings>
-	
+
 	<!-- 别名不区分大小写 -->
 	<typeAliases>
-	
-	<!-- 1.为java类型取别名
-		type:指定要取别名的类型全类名，默认别名为类名小写
-		alias:指定别名 -->
-	 <typeAlias type="com.hao.personnel.information.Student" alias="student"></typeAlias>
-	 <typeAlias type="com.hao.personnel.information.Teacher" alias="teacher"></typeAlias>
-	 
-	<!-- 2.批量为某包下所有的类取别名 -->
-	<package name="com.hao.personnel.information"></package>
-	
-	<!-- 3.在类前使用注解@Alias("xxx") -->
+
+		<!-- 1.为java类型取别名 type:指定要取别名的类型全类名，默认别名为类名小写 alias:指定别名 -->
+		<typeAlias type="com.hao.personnel.information.Student"
+			alias="student"></typeAlias>
+		<typeAlias type="com.hao.personnel.information.Teacher"
+			alias="teacher"></typeAlias>
+
+		<!-- 2.批量为某包下所有的类取别名 -->
+		<package name="com.hao.personnel.information"></package>
+
+		<!-- 3.在类前使用注解@Alias("xxx") -->
 	</typeAliases>
+
+
+	<environments default="dev_mysql">
 	
-	
-	<environments default="development">
-		<environment id="development">
+		<environment id="dev_mysql">
 			<transactionManager type="JDBC" />
 			<!-- 配置数据库连接信息 -->
 			<dataSource type="POOLED">
@@ -34,11 +35,32 @@
 				<property name="password" value="${jdbc_password}" />
 			</dataSource>
 		</environment>
+		
+		<environment id="dev_oracle">
+			<transactionManager type="JDBC" />
+			<!-- 配置数据库连接信息 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${orcl_driver}" />
+				<property name="url" value="${orcl_url}" />
+				<property name="username" value="${orcl_username}" />
+				<property name="password" value="${orcl_password}" />
+			</dataSource>
+		</environment>
+		
 	</environments>
+
+	<!-- 对多数据库厂商的支持，根据数据库厂商的标识（由驱动定义（getDatabaseProductName()）），来执行不同的数据库的sql语句 -->
+	<databaseIdProvider type="DB_VENDOR">
+	<!-- 为不同的数据库厂商起别名 -->
+		<property name="MySQL" value="mysql" />
+		<property name="Oracle" value="oracle" />
+		<property name="SQL Server" value="sqlserver" />
+	</databaseIdProvider>
 	
 	<mappers>
-		<mapper resource="student-sql-mapper.xml"/>
-		<mapper resource="teacher-sql-mapper.xml"/>
+		<mapper resource="student-sql-mapper.xml" />
+		<mapper resource="teacher-sql-mapper.xml" />
+		<!-- <package name="/" /> -->
 	</mappers>
-	
+
 </configuration>
