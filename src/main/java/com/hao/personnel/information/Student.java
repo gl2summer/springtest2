@@ -12,6 +12,20 @@ public class Student {
 	private boolean gender;
 	private String teacher;
 
+	public Student() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Student(Integer id, String name, Date birth, boolean gender, String teacher) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.birth = birth;
+		this.gender = gender;
+		this.teacher = teacher;
+	}
+
 	public Integer getId() {
 		return id;
 	}

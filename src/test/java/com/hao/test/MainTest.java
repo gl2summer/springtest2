@@ -12,5 +12,5 @@ public class MainTest {
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring-beans.xml");
 		FrontDesk frontDesk = context.getBean("FrontDesk", FrontDesk.class);
 	}
-
+	
 }

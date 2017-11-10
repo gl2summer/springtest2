@@ -10,7 +10,7 @@
     </update>
     
     <!-- 添加数据 -->
-    <insert id="add" parameterType="student" databaseId="mysql"> <!-- 此外使用了别名 -->
+    <insert id="add" parameterType="student" useGeneratedKeys="true" keyProperty="id" databaseId="mysql"> <!-- databaseId此外使用了别名 --><!-- 获取主键的值，并填充到数据模型的id中 -->
         insert into student(name,birth,gender,teacher) value(#{name},#{birth},#{gender},#{teacher});
     </insert>
     
