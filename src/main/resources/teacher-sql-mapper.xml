@@ -5,31 +5,31 @@
    
     <!-- 创建表 -->
     <update id="create" databaseId="mysql">
-        create table if not exists teacher (id int primary key auto_increment, name varchar(20), birth DATE, gender bit);
+        create table if not exists ${jdbc_table_teacher} (id int primary key auto_increment, name varchar(20), birth DATE, gender bit);
     </update>
     
     <!-- 添加数据 -->
     <insert id="add" parameterType="teacher" databaseId="mysql">
-        insert into teacher(name,birth,gender) value(#{name},#{birth},#{gender});
+        insert into ${jdbc_table_teacher}(name,birth,gender) value(#{name},#{birth},#{gender});
     </insert>
     
     <!-- 删除数据 -->
     <delete id="delById" parameterType="int" databaseId="mysql">
-        delete from teacher where id = #{id};
+        delete from ${jdbc_table_teacher} where id = #{id};
     </delete>
     
     <!-- 修改数据 -->
     <update id="update" parameterType="com.hao.personnel.information.Teacher" databaseId="mysql">
-        update teacher set name=#{name},birth=#{birth},gender=#{gender}, where id=#{id};
+        update ${jdbc_table_teacher} set name=#{name},birth=#{birth},gender=#{gender}, where id=#{id};
     </update>
     
     <!--根据id查询得到一个user对象-->
     <select id="getById" parameterType="int" resultType="com.hao.personnel.information.Teacher" databaseId="mysql">
-        select * from teacher where id=#{id};
+        select * from ${jdbc_table_teacher} where id=#{id};
     </select>
     
     <!-- 查询所有的用户 -->
     <select id="list" resultType="com.hao.personnel.information.Teacher" databaseId="mysql">
-        select * from teacher;
+        select * from ${jdbc_table_teacher};
     </select>
 </mapper>

@@ -6,31 +6,31 @@
     <!-- 创建表 -->
     <!-- databaseId声明对应的数据库驱动(在配置文件中的databaseIdProvider定义) -->
     <update id="create" databaseId="mysql">
-        create table if not exists student (id int primary key auto_increment, name varchar(20), birth DATE, gender bit, teacher varchar(20));
+        create table if not exists ${jdbc_table_student} (id int primary key auto_increment, name varchar(20), birth DATE, gender bit, teacher varchar(20));
     </update>
     
     <!-- 添加数据 -->
     <insert id="add" parameterType="student" useGeneratedKeys="true" keyProperty="id" databaseId="mysql"> <!-- databaseId此外使用了别名 --><!-- 获取主键的值，并填充到数据模型的id中 -->
-        insert into student(name,birth,gender,teacher) value(#{name},#{birth},#{gender},#{teacher});
+        insert into ${jdbc_table_student}(name,birth,gender,teacher) value(#{name},#{birth},#{gender},#{teacher});
     </insert>
     
     <!-- 删除数据 -->
     <delete id="delById" parameterType="int" databaseId="mysql">
-        delete from student where id = #{id};
+        delete from ${jdbc_table_student} where id = #{id};
     </delete>
     
     <!-- 修改数据 -->
     <update id="update" parameterType="com.hao.personnel.information.Student" databaseId="mysql">
-        update student set name=#{name},birth=#{birth},gender=#{gender},teacher=#{teacher}, where id=#{id};
+        update ${jdbc_table_student} set name=#{name},birth=#{birth},gender=#{gender},teacher=#{teacher}, where id=#{id};
     </update>
     
     <!--根据id查询得到一个user对象-->
     <select id="getById" parameterType="int" resultType="com.hao.personnel.information.Student" databaseId="mysql">
-        select * from student where id=#{id};
+        select * from ${jdbc_table_student} where id=#{id};
     </select>
     
     <!-- 查询所有的用户 -->
     <select id="list" resultType="com.hao.personnel.information.Student" databaseId="mysql">
-        select * from student;
+        select * from ${jdbc_table_student};
     </select>
 </mapper>

@@ -3,6 +3,7 @@
 <configuration>
 
 	<properties resource="myBatis-config.properties"></properties>
+	
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true"></setting>
 	</settings>
